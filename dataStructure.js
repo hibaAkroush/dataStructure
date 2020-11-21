@@ -51,3 +51,29 @@ function linkedList() {
         }
     }
 }
+
+var TreeNode = function(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+}
+
+var Tree = function (rootData) {
+    this.root = new TreeNode(rootData);
+    this.add = function(data, node){
+        var insertedNode = new TreeNode(data);
+        if(data >= node.left){
+            if(node.right === null){
+                node.right = insertedNode;
+                return "succefully added to left";
+            }
+            this.add(data, node.right)
+        } else {
+            if(node.left === null){
+                node.left = insertedNode;
+                return "succefully added to right";
+            }
+            this.add(data, node.left)
+        }
+    }
+}
